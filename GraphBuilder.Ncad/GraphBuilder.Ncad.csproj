@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <Platforms>x64</Platforms>
+        <Configurations>Debug NCAD;Release NCAD</Configurations>
+        <OutputPath>$(SolutionDir)bin-$(Platform)\$(Configuration)</OutputPath>
+        <OutputPath Condition="'$(Configuration)'=='Debug NCAD'">$(SolutionDir)bin-$(Platform)\Debug MultiCAD</OutputPath>
+        <OutputPath Condition="'$(Configuration)'=='Release NCAD'">$(SolutionDir)bin-$(Platform)\Release MultiCAD</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug NCAD|x64'">
+        <DefineConstants>$(DefineConstants)TRACE;NCAD</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release NCAD|x64'">
+        <DefineConstants>$(DefineConstants)TRACE;NCAD</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="hostdbmgd">
+            <HintPath>..\..\..\Desktop\New folder\include-x64\hostdbmgd.dll</HintPath>
+        </Reference>
+        <Reference Include="hostmgd">
+            <HintPath>..\..\..\Desktop\New folder\include-x64\hostmgd.dll</HintPath>
+        </Reference>
+        <Reference Include="imapimgd">
+            <HintPath>..\..\..\Desktop\New folder\include-x64\imapimgd.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="MapiBaseTypes">
+            <HintPath>..\..\..\Desktop\New folder\include-x64\mapibasetypes.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="mapimgd">
+            <HintPath>..\..\..\Desktop\New folder\include-x64\mapimgd.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\GraphBuilder.BL\GraphBuilder.BL.csproj" />
+    </ItemGroup>
+
+</Project>
